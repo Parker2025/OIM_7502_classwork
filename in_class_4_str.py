@@ -24,7 +24,7 @@ class Stock:
         self.data = pd.DataFrame(self.data)
         self.data.index = pd.to_datetime(self.data.index)
         self.calc_returns()
-        # need to figure out how to convert date index and datetime in pandas
+        
         return self.data
         pass
 
