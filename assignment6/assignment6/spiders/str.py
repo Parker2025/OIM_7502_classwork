@@ -10,8 +10,8 @@ class StrSpider(scrapy.Spider):
         assignment = Assignment6Item()
         rows = response.xpath("//*table//tbody/tr")
         for row in rows:
-            assignment['number'] = row.xpath("td[1]/text()").get()
-            assignment['company'] = row.xpath("td[2]/text()").get()
-            assignment['symbol'] = row.xpath("td[3]/text()").get()
-            assignment['ytd_return'] = row.xpath("td[4]/text()").get()
+            assignment['number'] = row.xpath("//table[1]//tbody/tr").get().replace('\xa0\ ', "").strip()
+            assignment['company'] = row.xpath("//table[2]//tbody/tr").get().replace("\xa0\ ", "").strip()
+            assignment['symbol'] = row.xpath("//table[3]//tbody/tr").get().replace("\xa0\ ", "").strip()
+            assignment['ytd_return'] = row.xpath("//table[4]//tbody/tr").get().replace("\xa0\ ", "").strip()
             yield assignment
